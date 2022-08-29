@@ -1,0 +1,249 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>0823作業</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+</head>
+ <style>
+ 	#top{
+ 		width: 100%;
+ 		height: 10%;
+ 		background-color: #555;
+ 	}
+ 	#menu{
+ 		width: 100%;
+ 		height: 5%;
+ 		background-color: #666;	
+ 	}
+ 	#menulist{
+ 		position: absolute;
+ 		height: 5%;
+ 	}
+ 	#menulist,#menulist ul{
+ 		width: 100%;
+		padding: 10px;
+		margin: 20px; 	
+ 	}
+ 	#menulist li{
+			border-right: 1px solid #ffffff;   /* 邊線 */
+			float:left;
+			list-style: none;
+			}
+	#menulist li ul{
+			position: absolute;  /*位置是絕對位置*/
+			left: auto; /*對於絕對位置再靠左*/
+			width: 80px;
+		}
+
+		#menulist a{
+			font-size: 20px;
+	
+		}
+
+
+
+
+
+
+ 	#photo{
+ 		width: 100%;
+ 		height: 50%;
+ 		background-color: #999;
+ 	}
+ 	
+ 	#Year{
+ 		width: 100%;
+ 		height: 10%;
+ 		background-color: #ADADAD;
+ 	}
+
+ </style>
+ 
+<body>
+	<div id="top">
+		top
+	</div>
+
+	
+	<div id="menu">
+		<ul id='menulist'>
+			<li><a herf='#'>3C產品</a>
+				<ul class='cs'>
+					<li><a href="#">筆記型電腦</a></li>
+					<li><a href="#">桌上型電器</a></li>
+					<li><a href="#">顯示卡</a></li>
+					<li><a href="#">電競螢幕</a></li>
+				</ul>
+			</li>
+			<li><a herf='#'>數位產品</a>
+				<ul class='cs'>
+					<li><a href="#">Nitendo</a></li>
+					<li><a href="#">Playstation</a></li>
+					<li><a href="#">Xbox</a></li>
+					<li><a href="#">遊戲配件/周邊</a></li>
+				</ul>
+			</li>
+			<li><a herf='#'>日常用品</a>
+				<ul class='cs'>
+					<li><a href="#">衛生紙</a></li>
+					<li><a href="#">天然有機</a></li>
+					<li><a href="#">洗髮精</a></li>
+					<li><a href="#">沐浴乳</a></li>
+				</ul>
+			</li>
+			<li><a herf='#'>運動戶外</a>
+				<ul class='cs'>
+					<li><a href="#">露營用具</a></li>
+					<li><a href="#">登山用具</a></li>
+					<li><a href="#">球具/護具</a></li>
+					<li><a href="#">健身器材</a></li>
+				</ul>
+			</li>
+			<li><a herf='#'>美妝</a>
+				<ul class='cs'>
+					<li><a href="#">DHC</a></li>
+					<li><a href="#">醫美保養</a></li>
+					<li><a href="#">彩妝/美甲</a></li>
+					<li><a href="#">香水</a></li>
+				</ul>
+			<li><a herf='#'>聯絡我們</a></li>
+			</li>
+		</ul>		
+	</div>
+	<style>
+	.active{
+		background-color: #ff0000;
+	}
+	.cs{
+		background-color:#005AB5;
+	}
+	</style>
+	<script>
+ 	
+ 	$(document).ready(function(){
+ 		$('#menulist li ul').hide();
+ 		$('#menulist li').hover(
+				function(){
+					$(this).find("ul").slideDown("fast");	
+					$(this).find("a:first").addClass("active");				
+				},function(){
+					$(this).find(".cs").fadeOut("fast");
+					$(this).find("a").removeClass("active");
+				}
+			)
+
+ 			
+
+ 	});
+ 	
+ </script>
+
+
+
+
+	<div id="photo">
+		<img id="sun"src="img/IMG_3164.jpg"
+				width="170px"
+				height="170px">
+		
+	</div>
+
+	
+
+
+
+
+		<button id="updown">點擊看更多</button>
+		<div id="back" style="width: 100%;height: 100px;background-color: #005AB5">
+			西瓜很黏
+		<br>
+		</div>
+	</div>
+
+<script>
+	$(document).ready(function(){
+		$("#updown").click(function(){
+			$("#back").slideToggle();
+		})
+	});
+</script>
+
+	<div id="Year">
+		年齡:<input type="text" id='age'name="age">
+		<br/>
+		<button id="btn3">送出</button>
+	</div>
+
+	<script>
+		$('#btn3').click(function(){
+			var age=$('#age').val();
+				if(age<"50" , age>"15"){
+				$('#age').text()
+				alert('符合');
+				}else{
+				$('#age').text()
+				alert('不符合');
+				}
+		});
+	</script>
+	<fieldset>
+		<legend>帳單資訊</legend>
+		<div>
+		  <label for="name">姓名</label>
+		  <input type="text" id="name" />
+		</div> 
+		<div>
+		  <label for="address">地址</label>
+		  <input type="texrt" id="address">
+		</div>
+		<div>
+		  <span>付款方式</span>
+		  <input type="radio" name="payment" value="creditcard" id="creditcard" checked/>
+		  <label for="creditcard">信用卡</label>
+		  <input type="radio" name="payment" value="transfer" id="transfer">
+		  <label for="transfer">轉帳</label>
+		</div>
+		<div id="credit">
+		  <div>
+			  <label for="expiration">卡號:</label>
+			  <input type="text" id="cardNumber" disabled />
+			  <!--
+				  attr('disabled',ture) 表示不可以輸入
+				  attr('disabled',false) 表示不輸入
+				  
+
+			  -->
+		  </div>
+		  ****************************************
+		  <div>
+			  <label for="expiration">有效期限:</label>
+			  <input type="text" id="expiration"/>
+		  </div>
+		</div>
+		<script>
+			$("#transfer").click(function(){
+				alert("關閉");
+			});
+				
+			
+		  </script>
+  </fieldset>
+  <fieldset>
+	<legend>送貨地址</legend>
+<div>
+	<input type="checkbox" id="hideShip" checked/>
+	<label for="hideShip">同帳單地址</label>
+</div>
+<div>
+	<label for="shipName">姓名</label>
+	<input type="text" id="shipName">
+</div>
+<div>
+	<label for="shipAddress">地址</label>
+	<input type="text" id="shipAddress"/>
+</div>
+</fieldset>
+
+</body>
+</html>
