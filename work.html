@@ -22,8 +22,8 @@
  	}
  	#menulist,#menulist ul{
  		width: 100%;
-		padding: 10px;
-		margin: 20px; 	
+		padding: 1px;
+		margin: 0px; 	
  	}
  	#menulist li{
 			border-right: 1px solid #ffffff;   /* 邊線 */
@@ -36,7 +36,7 @@
 			width: 80px;
 		}
 
-		#menulist a{
+	#menulist a{
 			font-size: 20px;
 	
 		}
@@ -119,25 +119,7 @@
 		background-color:#005AB5;
 	}
 	</style>
-	<script>
- 	
- 	$(document).ready(function(){
- 		$('#menulist li ul').hide();
- 		$('#menulist li').hover(
-				function(){
-					$(this).find("ul").slideDown("fast");	
-					$(this).find("a:first").addClass("active");				
-				},function(){
-					$(this).find(".cs").fadeOut("fast");
-					$(this).find("a").removeClass("active");
-				}
-			)
-
- 			
-
- 	});
- 	
- </script>
+	
 
 
 
@@ -161,13 +143,7 @@
 		</div>
 	</div>
 
-<script>
-	$(document).ready(function(){
-		$("#updown").click(function(){
-			$("#back").slideToggle();
-		})
-	});
-</script>
+
 
 	<div id="Year">
 		年齡:<input type="text" id='age'name="age">
@@ -175,18 +151,6 @@
 		<button id="btn3">送出</button>
 	</div>
 
-	<script>
-		$('#btn3').click(function(){
-			var age=$('#age').val();
-				if(age<"50" , age>"15"){
-				$('#age').text()
-				alert('符合');
-				}else{
-				$('#age').text()
-				alert('不符合');
-				}
-		});
-	</script>
 	<fieldset>
 		<legend>帳單資訊</legend>
 		<div>
@@ -207,13 +171,8 @@
 		<div id="credit">
 		  <div>
 			  <label for="expiration">卡號:</label>
-			  <input type="text" id="cardNumber" disabled />
-			  <!--
-				  attr('disabled',ture) 表示不可以輸入
-				  attr('disabled',false) 表示不輸入
-				  
-
-			  -->
+			  <input type="text" id="cardNumber" />
+			
 		  </div>
 		  ****************************************
 		  <div>
@@ -221,29 +180,77 @@
 			  <input type="text" id="expiration"/>
 		  </div>
 		</div>
-		<script>
-			$("#transfer").click(function(){
-				alert("關閉");
-			});
-				
-			
-		  </script>
+		
   </fieldset>
+  
   <fieldset>
 	<legend>送貨地址</legend>
 <div>
 	<input type="checkbox" id="hideShip" checked/>
 	<label for="hideShip">同帳單地址</label>
 </div>
-<div>
-	<label for="shipName">姓名</label>
-	<input type="text" id="shipName">
-</div>
-<div>
-	<label for="shipAddress">地址</label>
-	<input type="text" id="shipAddress"/>
+<div id="hide">
+	<div>
+		<label for="shipName">姓名</label>
+		<input type="text" id="shipName">
+	</div>
+	<div>
+		<label for="shipAddress">地址</label>
+		<input type="text" id="shipAddress"/>
+	</div>
 </div>
 </fieldset>
+<script>
+	$(document).ready(function(){
+		/*中段色斷收放*/
+		$("#updown").click(function(){
+			$("#back").slideToggle();
+			});
+		/*地址隱藏(收放)*/
+		$('#hideShip').click(function(){
+				$('#hide').slideToggle();
+			
+			});
+		/*信用卡與轉帳 禁止輸入*/
+		$("#creditcard").click(function(){
+				$("#credit input").attr('disabled',false);
+				
+			})
+		$("#transfer").click(function(){
+				$("#credit input").attr('disabled',true);
+			})
+		/*年齡*/
+		$('#btn3').click(function(){
+				var age=$('#age').val();
+					if(age<"50" , age>"15"){
+					$('#age').text()
+					alert('符合');
+					}else{
+					$('#age').text()
+					alert('不符合');
+					}
+		});
+		/*目錄*/
+			$('#menulist li ul').hide();
+			$('#menulist li').hover(
+				function(){
+					$(this).find("ul").slideDown("fast");	
+					$(this).find("a:first").addClass("active");				
+				},function(){
+					$(this).find(".cs").fadeOut("fast");
+					$(this).find("a").removeClass("active");
+				})
+		});
+</script>
 
 </body>
 </html>
+
+
+
+  <!--
+				  attr('disabled',ture) 表示不可以輸入
+				  attr('disabled',false) 表示不輸入
+				  
+
+			  -->
